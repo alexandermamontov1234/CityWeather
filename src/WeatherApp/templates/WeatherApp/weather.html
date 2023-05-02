@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Погода</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить город</button>
+</form>
+
+{% for w in weather %}
+    {{w.city}}
+    {{w.temperature}}
+    {{w.desc}}
+    <img src="http://openweathermap.org/img/w/{{ w.icon }}.png" alt="Image">
+    <form action="/delete/{{w.city.pk}}" method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+    <br>
+{% endfor %}
+</body>
+</html>
