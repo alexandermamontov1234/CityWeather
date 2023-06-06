@@ -19,10 +19,6 @@ class CityWeather(ListView, FormMixin):
     model = City
     form_class = AddCityForm
 
-    # def __init__(self, *args, **kwargs):
-    #     super(CityWeather, self).__init__(*args, **kwargs)
-    #     self.object_list = self.get_queryset()
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         cities = City.objects.all()
